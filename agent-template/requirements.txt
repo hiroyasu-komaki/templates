@@ -1,0 +1,3 @@
+# このエージェントが依存する Python パッケージを記載する
+# 追加時は .venv/bin/pip install <パッケージ名> のあと
+# .venv/bin/pip freeze > requirements.txt で更新する

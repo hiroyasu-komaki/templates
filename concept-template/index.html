@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+  公開用トップページの雛形。
+  - {{ }} で囲んだ箇所を書き換える
+  - html/ 配下のページを増やしたら ul.toc に <li> を追加する
+  - 日英併記が不要なら .lang ブロックと <script> と data-en 属性を削除する
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{Concept Title}}</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="lang" role="group" aria-label="Language">
+    <button id="btn-ja" class="on" onclick="setLang('ja')">日本語</button>
+    <button id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+
+  <div class="eyebrow">{{CATEGORY LABEL}}</div>
+
+  <h1 data-ja="{{コンセプトのタイトル}}"
+      data-en="{{Concept Title in English}}">{{コンセプトのタイトル}}</h1>
+
+  <p class="lede"
+     data-ja="{{このコンセプトが何を扱い、何を扱わないかを2〜3文で。}}"
+     data-en="{{One or two sentences on scope and non-scope.}}">
+    {{このコンセプトが何を扱い、何を扱わないかを2〜3文で。}}
+  </p>
+
+  <ul class="toc">
+    <li>
+      <a href="html/00_theory.html">
+        <span class="t"><span class="n">00</span><span data-ja="{{理論編のタイトル}}" data-en="{{Theory}}">{{理論編のタイトル}}</span></span>
+        <span class="s" data-ja="{{一行説明}}" data-en="{{One-line description}}">{{一行説明}}</span>
+      </a>
+    </li>
+    <li>
+      <a href="html/01_problem.html">
+        <span class="t"><span class="n">01</span><span data-ja="{{診断編のタイトル}}" data-en="{{Diagnosis}}">{{診断編のタイトル}}</span></span>
+        <span class="s" data-ja="{{一行説明}}" data-en="{{One-line description}}">{{一行説明}}</span>
+      </a>
+    </li>
+    <li>
+      <a href="html/02_proposal.html">
+        <span class="t"><span class="n">02</span><span data-ja="{{提言編のタイトル}}" data-en="{{Proposal}}">{{提言編のタイトル}}</span></span>
+        <span class="s" data-ja="{{一行説明}}" data-en="{{One-line description}}">{{一行説明}}</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="foot"
+       data-ja="<b>出典・前提</b>　{{参照フレームワークや前提条件を記載}}"
+       data-en="<b>Sources</b>　{{Reference frameworks and assumptions}}">
+    <b>出典・前提</b>　{{参照フレームワークや前提条件を記載}}
+  </div>
+
+</div>
+
+<script>
+function setLang(lang){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-' + lang + ']').forEach(function(el){
+    el.innerHTML = el.getAttribute('data-' + lang);
+  });
+  document.getElementById('btn-ja').classList.toggle('on', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('on', lang === 'en');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+  公開ページの雛形。
+  複製して 00_theory.html / 01_problem.html / 02_proposal.html などにリネームする。
+  ファイル名は chapters/ の Markdown と同じ連番・同じ主題に揃えること。
+  画像は ../images/ を相対パスで参照する。
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{章タイトル}} | {{Concept Title}}</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="wrap wrap--doc">
+
+  <div class="eyebrow">{{NN}} / {{CATEGORY LABEL}}</div>
+  <h1>{{章タイトル}}</h1>
+  <p class="lede">{{この章の要旨を2〜3文で。}}</p>
+
+  <h2>{{節見出し}}</h2>
+  <p>{{本文}}</p>
+
+  <h2>{{表を置く節}}</h2>
+  <table>
+    <thead>
+      <tr><th>{{項目}}</th><th>{{内容}}</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>{{ }}</td><td>{{ }}</td></tr>
+    </tbody>
+  </table>
+
+  <figure>
+    <img src="../images/{{NN_figure-name}}.png" alt="{{図の説明}}">
+    <figcaption>図{{N}}　{{図タイトル}}</figcaption>
+  </figure>
+
+  <div class="nav">
+    <a href="../index.html">&larr; 目次に戻る</a>
+    <a href="{{NN+1}}_{{next}}.html">次の章 &rarr;</a>
+  </div>
+
+  <div class="foot"><b>出典</b>　{{参照文献・フレームワーク}}</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+/* ============================================================
+   concept-template 共通スタイル
+   index.html と html/*.html の両方から参照する。
+   コンセプトごとの色替えは :root の変数のみ書き換えれば足りる。
+   ============================================================ */
+
+:root {
+  --navy:   #12305e;  /* 見出し・アクセント */
+  --ink:    #1b2430;  /* 本文 */
+  --gray:   #5f6a77;  /* 補足文 */
+  --gray-l: #8b95a1;  /* ラベル・注記 */
+  --line:   #d7dde5;  /* 罫線 */
+  --bg:     #eef1f5;  /* 背景 */
+  --paper:  #ffffff;  /* カード・本文面 */
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 60px 20px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Yu Gothic UI", "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  line-height: 1.85;
+}
+html[lang="en"] body { font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+
+.wrap { max-width: 620px; margin: 0 auto; position: relative; }
+.wrap--doc { max-width: 760px; background: var(--paper); padding: 48px 56px; border: 1px solid var(--line); }
+
+/* --- ヘッダ ------------------------------------------------ */
+.eyebrow { font-size: 10px; font-weight: 700; letter-spacing: .14em; color: var(--gray-l); margin-bottom: 6px; }
+h1 { font-size: 19px; color: var(--navy); margin: 0 0 8px; font-weight: 700; line-height: 1.5; padding-right: 130px; }
+h2 { font-size: 15px; color: var(--navy); margin: 32px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+h3 { font-size: 13px; margin: 22px 0 6px; }
+.lede { font-size: 12px; color: var(--gray); margin: 0 0 24px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+.lede b { color: var(--ink); }
+
+/* --- 言語切替（不要なら index.html 側の .lang ごと削除） ---- */
+.lang { display: flex; border: 1px solid var(--line); position: absolute; top: -4px; right: 0; background: #fff; }
+.lang button { border: none; background: #fff; color: var(--gray); font: inherit; font-size: 11px;
+                font-weight: 700; letter-spacing: .06em; padding: 5px 13px; cursor: pointer; }
+.lang button + button { border-left: 1px solid var(--line); }
+.lang button.on { background: var(--navy); color: #fff; }
+
+/* --- 目次リンク（index.html） ------------------------------ */
+ul.toc { list-style: none; margin: 0; padding: 0; }
+ul.toc li { margin-bottom: 10px; }
+ul.toc a { display: block; padding: 14px 18px; background: var(--paper); border: 1px solid var(--line);
+           color: var(--navy); text-decoration: none; transition: border-color .15s; }
+ul.toc a:hover { border-color: var(--navy); }
+ul.toc .n { color: var(--gray-l); font-weight: 600; margin-right: 8px; }
+ul.toc .t { font-size: 14px; font-weight: 700; line-height: 1.5; }
+ul.toc .s { display: block; font-size: 11px; color: var(--gray); font-weight: 400; margin-top: 4px; }
+
+/* --- 本文要素（html/*.html） ------------------------------- */
+p { font-size: 13px; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 14px 0; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #f4f6f9; font-weight: 700; color: var(--navy); }
+figure { margin: 20px 0; }
+figure img { width: 100%; border: 1px solid var(--line); }
+figcaption { font-size: 11px; color: var(--gray-l); margin-top: 6px; }
+blockquote { margin: 16px 0; padding: 10px 16px; border-left: 3px solid var(--navy);
+             background: #f4f6f9; font-size: 12px; color: var(--gray); }
+
+/* --- フッタ ------------------------------------------------ */
+.foot { margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--line);
+        font-size: 10.5px; color: var(--gray-l); }
+.foot b { color: var(--gray); font-weight: 700; }
+.nav { display: flex; justify-content: space-between; margin-top: 28px; font-size: 11.5px; }
+.nav a { color: var(--navy); text-decoration: none; }
+.nav a:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  body { padding: 40px 14px; }
+  h1 { padding-right: 0; margin-top: 34px; }
+  .wrap--doc { padding: 28px 20px; }
+}
